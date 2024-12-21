@@ -1,0 +1,39 @@
+schema: '2.0'
+stages:
+  train:
+    cmd: python train.py
+    deps:
+    - path: data/
+      hash: md5
+      md5: e39610388f0a42aa22dde304510a7892.dir
+      size: 593975324
+      nfiles: 5044
+    - path: train.py
+      hash: md5
+      md5: 76909e72d426c5a7761e6e969c9f94dd
+      size: 6153
+    outs:
+    - path: accuracy_plot.png
+      hash: md5
+      md5: 641543845d734229a3d701faa4065af2
+      size: 23029
+    - path: model.pth
+      hash: md5
+      md5: d1f012c5fdb0de863225c9eac5a1d7ae
+      size: 8401396
+  evaluate:
+    cmd: python evaluate.py
+    deps:
+    - path: evaluate.py
+      hash: md5
+      md5: 08b61cbf192e9e783ce2b768bb63527e
+      size: 3931
+    - path: model.pth
+      hash: md5
+      md5: d1f012c5fdb0de863225c9eac5a1d7ae
+      size: 8401396
+    outs:
+    - path: classification_report.json
+      hash: md5
+      md5: 077b97dfe0ef2310ef135a2d2b1c2d98
+      size: 731

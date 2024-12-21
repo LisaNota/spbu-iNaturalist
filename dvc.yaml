@@ -1,0 +1,16 @@
+stages:
+  train:
+    cmd: python train.py
+    deps:
+      - train.py
+      - data/
+    outs:
+      - model.pth
+      - accuracy_plot.png
+  evaluate:
+    cmd: python evaluate.py
+    deps:
+      - evaluate.py
+      - model.pth
+    outs:
+      - classification_report.json
