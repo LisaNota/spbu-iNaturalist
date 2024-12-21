@@ -2,3 +2,4 @@
 /data
 /classification_report.json
 /__pycache__
+/local_storage
