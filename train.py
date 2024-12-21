@@ -25,6 +25,14 @@ class CustomDataset(Dataset):
         return self.tensors[idx], self.targets[idx]
 
 
+transform = transforms.Compose([
+    transforms.Resize((params['train']['image_size'],
+                       params['train']['image_size'])),
+    transforms.ToTensor(),
+    transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
+])
+
+
 def load_images_from_folder(folder: str, target: int):
     tensors = []
     targets = []
@@ -83,12 +91,6 @@ def init_weights(m):
 
 
 if __name__ == "__main__":
-    transform = transforms.Compose([
-        transforms.Resize((params['train']['image_size'],
-                           params['train']['image_size'])),
-        transforms.ToTensor(),
-        transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
-    ])
 
     foxes_dir = "data/foxes_images/"
     butterflies_dir = "data/butterflies_images/"
